@@ -2,36 +2,19 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>عرض البيانات من Google Sheets</title>
-</head>
-<body>
-    <h2>بيانات من Google Sheets</h2>
-    <div id="data"></div>
-
-    <script>
-        fetch('https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/gviz/tq?tqx=out:json')
-        .then(res => res.text())
-        .then(data => {
-            let json = JSON.parse(data.substr(47).slice(0, -2));
-            let table = '<table border="1"><tr>';
-
-            const cols = json.table.cols;
-            cols.forEach(col => {
-                table += `<th>${col.label}</th>`;
-            });
-            table += '</tr>';
-
-            json.table.rows.forEach(row => {
-                table += '<tr>';
-                row.c.forEach(cell => {
-                    table += `<td>${cell ? cell.v : ''}</td>`;
-                });
-                table += '</tr>';
-            });
-            table += '</table>';
-
-            document.getElementById('data').innerHTML = table;
-        });
-    </script>
-</body>
-</html>
+    <title>Job Application Tracker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
